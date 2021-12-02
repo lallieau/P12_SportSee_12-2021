@@ -8,12 +8,12 @@ import Swim from '../../assets/icon-swim.svg';
 import Gym from '../../assets/icon-dumbell.svg';
 
 const SportGroup = styled.div`
+  background-color: ${colors.secondary};
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: ${colors.secondary};
-  height: 100vh;
+  justify-content: flex-end;
 `;
 
 const Copyright = styled.p`
@@ -22,35 +22,34 @@ const Copyright = styled.p`
   margin-bottom: 1.25rem;
   transform: rotate(180deg);
   writing-mode: vertical-lr;
+  font-size: 1rem;
 `;
 
 const Image = styled.img`
   width: clamp(2.5rem, 4.5vw, 4rem);
-  padding-top: 20px;
+  padding-top: 1rem;
 `;
 
 const SportLink = styled.div`
-  width: fit-content;
-  padding: 0px 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: 8.5rem 1.875rem;
 `;
 
 export const SideNav = () => {
   return (
     <SportGroup>
       <SportLink>
-        <Link to="/">
+        <Link to="">
           <Image className="icon" src={Yoga} alt="icon"></Image>
         </Link>
-        <Link to="/">
+        <Link to="">
           <Image className="icon" src={Swim} alt="icon"></Image>
         </Link>
-        <Link to="/">
+        <Link to="">
           <Image className="icon" src={Bike} alt="icon"></Image>
         </Link>
-        <Link to="/">
+        <Link to="">
           <Image className="icon" src={Gym} alt="icon"></Image>
         </Link>
       </SportLink>

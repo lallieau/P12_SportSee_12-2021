@@ -1,38 +1,40 @@
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {colors} from '../../utils/style/colors';
 import logo from '../../assets/logo-sportsee.svg';
 
+const Image = styled.img`
+  width: 11.25rem;
+`;
+
+const NavGroup = styled.nav`
+  background-color: ${colors.secondary};
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+`;
+
+const NavLink = styled(Link)`
+  text-decoration: none;
+  padding: 0.625rem 3.125rem;
+  color: ${colors.third};
+  font-size: 1.25rem;
+  font-weight: 500;
+`;
+
 export const TopNav = () => {
-  const Image = styled.img`
-    width: 11.25rem;
-  `;
-
-  const NavGroup = styled.div`
-    display: flex;
-    background-color: ${colors.secondary};
-    padding: 0px 30px;
-    justify-content: space-between;
-    align-items: center;
-  `;
-
-  const Link = styled(NavLink)`
-    text-decoration: none;
-    padding: 10px;
-    color: ${colors.third};
-    font-size: 1.5rem;
-    font-weight: 500;
-  `;
-
   return (
     <NavGroup>
-      <Link to="/">
+      <NavLink to="/">
         <Image className="logo" src={logo} alt="logo"></Image>
-      </Link>
-      <Link to="/">Accueil</Link>
-      <Link to="/profil">Profil</Link>
-      <Link to="/setting">Réglage</Link>
-      <Link to="/community">Communauté</Link>
+      </NavLink>
+      <NavLink to="">Accueil</NavLink>
+      <NavLink to="">Profil</NavLink>
+      <NavLink to="">Réglage</NavLink>
+      <NavLink to="">Communauté</NavLink>
     </NavGroup>
   );
 };
