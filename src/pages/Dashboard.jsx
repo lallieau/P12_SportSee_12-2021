@@ -7,6 +7,7 @@ import {Activity} from '../components/Dashboard/Activity';
 import {AverageSession} from '../components/Dashboard/AverageSession';
 import {Performance} from '../components/Dashboard/Performance';
 import {ScoreDay} from '../components/Dashboard/ScoreDay';
+import {useEffect} from 'react';
 
 const DashboardWrapper = styled.div`
   display: flex;
@@ -35,6 +36,10 @@ const Analysis = styled.div`
 `;
 
 export const Dashboard = () => {
+  useEffect(() => {
+    document.title = `Dashboard de ${'Thomas'}`;
+  });
+
   return (
     <>
       <TopNav />

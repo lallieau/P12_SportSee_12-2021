@@ -22,18 +22,18 @@ const Copyright = styled.p`
   margin-bottom: 1.25rem;
   transform: rotate(180deg);
   writing-mode: vertical-lr;
-  font-size: 1rem;
+  font-size: 0.8rem;
 `;
 
 const Image = styled.img`
-  width: clamp(2.5rem, 4.5vw, 4rem);
-  padding-top: 1rem;
+  width: clamp(2.5rem, 3.3rem, 4rem);
+  padding-top: 0.5rem;
 `;
 
 const SportLink = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 8.5rem 1.875rem;
+  padding: 5.5rem 1.875rem;
 `;
 
 export const SideNav = () => {
