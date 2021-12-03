@@ -1,72 +1,80 @@
 import styled from 'styled-components';
-import {DashboardHeader} from '../components/Dashboard/DashboardHeader';
-import {TopNav} from '../components/Nav/TopNav';
-import {SideNav} from '../components/Nav/SideNav';
-import {KeyFigures} from '../components/Dashboard/KeyFigures';
-import {Activity} from '../components/Dashboard/Activity';
-import {AverageSession} from '../components/Dashboard/AverageSession';
-import {Performance} from '../components/Dashboard/Performance';
-import {ScoreDay} from '../components/Dashboard/ScoreDay';
-import {useEffect} from 'react';
+import {SideNavigationBar} from '../components/Navigation/SideNavigationBar';
+import {KeyFigures} from '../components/Statistics/KeyFigures';
+import {Activity} from '../components/Statistics/Activity';
+import {AverageSession} from '../components/Statistics/AverageSession';
+import {Performance} from '../components/Statistics/Performance';
+import {ScoreDay} from '../components/Statistics/ScoreDay';
+import {Layout} from '../components/Layout';
+import {colors} from '../utils/style/colors';
 
-const DashboardWrapper = styled.div`
+//https://styled-components.com/docs/advanced#theming
+
+const DashboardLayout = styled.main`
   display: flex;
   height: 100vh;
 `;
 
-const InfosWrapper = styled.div`
-  margin-top: 8rem;
-  margin-left: 5rem;
-  margin-right: 5rem;
+const Header = styled.div``;
+const HeaderTitle = styled.h1``;
+const HeaderText = styled.p`
+  font-weight: 400;
+  font-size: 1rem;
+`;
+const UserName = styled.span`
+  color: ${colors.primary};
+`;
+const Contents = styled.div`
+  margin: 100px 50px;
   width: 100%;
 `;
-
-const UserStats = styled.div`
+const Statistics = styled.div`
   display: flex;
 `;
-
-const StatsGraphics = styled.div`
-  width: 100%;
-`;
-
-const KeyFiguresWrapper = styled.div``;
-
+const StatisticsGraphics = styled.div``;
 const Analysis = styled.div`
   display: flex;
 `;
 
-export const Dashboard = () => {
-  useEffect(() => {
-    document.title = `Dashboard de ${'Thomas'}`;
-  });
-
+const Heading = () => {
   return (
-    <>
-      <TopNav />
+    <Header>
+      <HeaderTitle>
+        Bonjour <UserName>Thomas</UserName>
+      </HeaderTitle>
+      <HeaderText>
+        Félicitation ! Vous avez explosé vos objectifs hier 👏
+      </HeaderText>
+    </Header>
+  );
+};
 
-      <DashboardWrapper>
-        <SideNav />
+const UserStats = () => {
+  return (
+    <Statistics>
+      <StatisticsGraphics>
+        <Activity />
+        <Analysis>
+          <AverageSession />
+          <Performance />
+          <ScoreDay />
+        </Analysis>
+      </StatisticsGraphics>
+      <KeyFigures />
+    </Statistics>
+  );
+};
 
-        <InfosWrapper>
-          <DashboardHeader />
-
-          <UserStats>
-            <StatsGraphics>
-              <Activity />
-
-              <Analysis>
-                <AverageSession />
-                <Performance />
-                <ScoreDay />
-              </Analysis>
-            </StatsGraphics>
-
-            <KeyFiguresWrapper>
-              <KeyFigures />
-            </KeyFiguresWrapper>
-          </UserStats>
-        </InfosWrapper>
-      </DashboardWrapper>
-    </>
+export const Dashboard = () => {
+  return (
+    <Layout title={'Dashboard de Thomas'}>
+      <DashboardLayout>
+        <SideNavigationBar />
+        <Contents>
+          <Heading />
+          <UserStats />
+        </Contents>
+      </DashboardLayout>
+    </Layout>
   );
 };

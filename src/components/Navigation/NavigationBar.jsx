@@ -25,7 +25,7 @@ const NavLink = styled(Link)`
   font-weight: 500;
 `;
 
-export const TopNav = () => {
+export const NavigationBar = () => {
   return (
     <NavGroup>
       <NavLink to="/">

@@ -1,27 +1,27 @@
-// import PropTypes from 'prop-types';
-// import {Test} from '../components/Test';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
 import logo from '../assets/logo-sportsee.svg';
-import {useEffect} from 'react';
+import {Layout} from '../components/Layout';
+
+const Contents = styled.main`
+  height: 100vh;
+  margin: 0 auto;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const Logo = styled.img``;
+const Title = styled.h1``;
 
 export const Home = () => {
-  useEffect(() => {
-    document.title = `Accueil`;
-  });
-
   return (
-    <>
-      <img src={logo} alt="logo sportsee" />
-      <h1>Bienvenue sur SportSee !</h1>
-      <Link to="/user">Accéder au Dashboard</Link>
-    </>
+    <Layout title={'SportSee - Accueil'}>
+      <Contents>
+        <Logo src={logo} alt="logo sportsee" />
+        <Title>Bienvenue sur SportSee !</Title>
+        <Link to="/user">Accéder au Dashboard</Link>
+      </Contents>
+    </Layout>
   );
 };
-
-// Home.propTypes = {
-//   title: PropTypes.string.isRequired,
-// };
-
-// Home.defaultProps = {
-//   title: 'Mon titre par défaut',
-// };

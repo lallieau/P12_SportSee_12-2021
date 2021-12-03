@@ -36,7 +36,7 @@ const SportLink = styled.div`
   padding: 5.5rem 1.875rem;
 `;
 
-export const SideNav = () => {
+export const SideNavigationBar = () => {
   return (
     <SportGroup>
       <SportLink>
