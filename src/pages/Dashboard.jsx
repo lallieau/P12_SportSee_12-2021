@@ -8,8 +8,6 @@ import {ScoreDay} from '../components/Statistics/ScoreDay';
 import {Layout} from '../components/Layout';
 import {colors} from '../utils/style/colors';
 
-//https://styled-components.com/docs/advanced#theming
-
 const DashboardLayout = styled.main`
   display: flex;
   height: 100vh;
@@ -30,10 +28,14 @@ const Contents = styled.div`
 `;
 const Statistics = styled.div`
   display: flex;
+  width: 100%;
 `;
-const StatisticsGraphics = styled.div``;
+const StatisticsGraphics = styled.div`
+  width: 100%;
+`;
 const Analysis = styled.div`
   display: flex;
+  width: 100%;
 `;
 
 const Heading = () => {
