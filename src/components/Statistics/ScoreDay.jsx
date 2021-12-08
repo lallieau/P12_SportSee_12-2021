@@ -1,18 +1,18 @@
-import {ResponsiveContainer, RadialBarChart, RadialBar, Legend} from 'recharts';
+import {ResponsiveContainer, RadialBarChart, RadialBar} from 'recharts';
 import styled from 'styled-components';
 import {colors} from '../../utils/style/colors';
 
 const ScoreDayWrapper = styled.div`
-  background: ${colors.primary};
   border-radius: 5px;
   height: 14.063rem;
   width: 100%;
   position: relative;
   padding: 10px;
+  background: ${colors.lightBackground};
 `;
 
-const AverageHeading = styled.h2`
-  color: ${colors.third};
+const ScoreHeading = styled.h2`
+  color: ${colors.secondary};
   font-size: clamp(1rem, 1.2vw, 1.125rem);
   font-weight: 500;
   left: 0.938rem;
@@ -22,12 +22,21 @@ const AverageHeading = styled.h2`
   width: 10.625rem;
 `;
 
-const Score = 0.12;
+const data = [
+  {
+    todayScore: 0.12,
+  },
+];
 
 export const ScoreDay = () => {
+  const scoreValue = [
+    {value: 1, fill: colors.lightBackground},
+    {value: data.todayScore, fill: '#FF0000'},
+  ];
+
   return (
     <ScoreDayWrapper>
-      <AverageHeading>Durée moyenne des sessions</AverageHeading>
+      <ScoreHeading>Score</ScoreHeading>
       <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart
           width={700}
@@ -36,9 +45,13 @@ export const ScoreDay = () => {
           endAngle={450}
           innerRadius={50}
           outerRadius={110}
-          barSize={10}
-          data={Score}>
-          <RadialBar cornerRadius={50} dataKey="value" />
+          barSize={12}
+          data={scoreValue}>
+          <RadialBar
+            cornerRadius={50}
+            dataKey="value"
+            background={{fill: '#FCFCFC'}}
+          />
         </RadialBarChart>
       </ResponsiveContainer>
     </ScoreDayWrapper>

@@ -10,7 +10,6 @@ import {colors} from '../utils/style/colors';
 
 const DashboardLayout = styled.main`
   display: flex;
-  height: 100vh;
 `;
 
 const Header = styled.div``;
@@ -23,19 +22,14 @@ const UserName = styled.span`
   color: ${colors.primary};
 `;
 const Contents = styled.div`
-  margin: 100px 50px;
-  width: 100%;
+  //margin: 90px 50px 0px;
 `;
 const Statistics = styled.div`
   display: flex;
-  width: 100%;
 `;
-const StatisticsGraphics = styled.div`
-  width: 100%;
-`;
+const StatisticsGraphics = styled.div``;
 const Analysis = styled.div`
   display: flex;
-  width: 100%;
 `;
 
 const Heading = () => {

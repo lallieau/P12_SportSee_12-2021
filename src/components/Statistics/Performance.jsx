@@ -3,17 +3,14 @@ import {
   PolarGrid,
   ResponsiveContainer,
   PolarAngleAxis,
-  PolarRadiusAxis,
   Radar,
-  Legend,
 } from 'recharts';
 import styled from 'styled-components';
 import {colors} from '../../utils/style/colors';
 
 const PerformanceWrapper = styled.div`
-  background: ${colors.secondary};
+  background: #282d30;
   border-radius: 5px;
-  height: 14.063rem;
   width: 100%;
   position: relative;
   padding: 10px;
@@ -46,37 +43,39 @@ const data = [
   },
 ];
 
-// const TransformKind = tickItem => {
-//   const Kind = [
-//     {
-//       1: 'cardio',
-//       2: 'energy',
-//       3: 'endurance',
-//       4: 'strength',
-//       5: 'speed',
-//       6: 'intensity',
-//     },
-//   ];
-//   if (tickItem) return Kind[tickItem - 1];
-// };
+const TransformKind = tickItem => {
+  const Kind = [
+    'Cardio',
+    'Energie',
+    'Endurance',
+    'Force',
+    'Vitesse',
+    'Intensité',
+  ];
+  if (tickItem) return Kind[tickItem - 1];
+};
+
+const reverseActivityOrder = [...data].sort((a, b) => b.kind - a.kind);
 
 export const Performance = () => {
   return (
     <PerformanceWrapper>
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart outerRadius={90} width={730} height={250} data={data}>
-          <PolarGrid />
-          <PolarAngleAxis dataKey="subject" />
-          <PolarRadiusAxis angle={30} domain={[0, 150]} />
-
-          <Radar
-            name="Lily"
-            dataKey="B"
-            stroke="#82ca9d"
-            fill="#82ca9d"
-            fillOpacity={0.6}
+        <RadarChart outerRadius={90} data={reverseActivityOrder}>
+          <PolarGrid radialLines={false} />
+          <PolarAngleAxis
+            dataKey="kind"
+            tickFormatter={TransformKind}
+            stroke={`${colors.third}`}
+            tickLine={false}
+            style={{fontSize: '12px', fontWeight: '500'}}
           />
-          <Legend />
+          <Radar
+            name="Performance"
+            dataKey="value"
+            fill={colors.primary}
+            fillOpacity={0.7}
+          />
         </RadarChart>
       </ResponsiveContainer>
     </PerformanceWrapper>
