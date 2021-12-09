@@ -10,6 +10,12 @@ import {colors} from '../utils/style/colors';
 
 const DashboardLayout = styled.main`
   display: flex;
+  flex-direction: column-reverse;
+
+  @media screen and (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: clamp(3.5rem, 8vw, 7.5rem) 1fr;
+  }
 `;
 
 const Header = styled.div``;
@@ -22,14 +28,37 @@ const UserName = styled.span`
   color: ${colors.primary};
 `;
 const Contents = styled.div`
-  //margin: 90px 50px 0px;
+  min-height: 100vh;
+  padding: clamp(0.625rem, 1.5vw, 4.5rem);
 `;
 const Statistics = styled.div`
   display: flex;
+  flex-direction: column-reverse;
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+  }
 `;
-const StatisticsGraphics = styled.div``;
+const StatisticsGraphics = styled.div`
+  @media screen and (min-width: 1024px) {
+    width: 75%;
+  }
+`;
 const Analysis = styled.div`
+  align-items: center;
   display: flex;
+  flex-direction: column;
+  gap: 0.938rem;
+  margin: 1.25rem 0rem;
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1.25rem 0rem 0rem;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-top: 4.375rem;
+  }
 `;
 
 const Heading = () => {

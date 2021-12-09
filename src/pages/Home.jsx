@@ -4,12 +4,12 @@ import logo from '../assets/logo-sportsee.svg';
 import {Layout} from '../components/Layout';
 
 const Contents = styled.main`
-  height: 100vh;
   margin: 0 auto;
   flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10rem;
 `;
 const Logo = styled.img``;
 const Title = styled.h1``;

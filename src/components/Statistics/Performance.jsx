@@ -13,6 +13,7 @@ const PerformanceWrapper = styled.div`
   border-radius: 5px;
   width: 100%;
   position: relative;
+  height: 14.063rem;
   padding: 10px;
 `;
 

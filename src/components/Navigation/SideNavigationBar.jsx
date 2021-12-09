@@ -10,30 +10,47 @@ import Gym from '../../assets/icon-dumbell.svg';
 const SportGroup = styled.div`
   background-color: ${colors.secondary};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+
+  @media screen and (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: clamp(3.5rem, 8vw, 7.5rem);
+    grid-template-rows: 6fr 2fr;
+    margin-top: unset;
+  }
 `;
 
 const Copyright = styled.p`
   color: ${colors.third};
-  align-items: center;
-  margin-bottom: 1.25rem;
-  transform: rotate(180deg);
-  writing-mode: vertical-lr;
-  font-size: 0.8rem;
+  display: flex;
+  font-size: 0.75rem;
+  font-weight: 500;
+  justify-content: center;
+
+  @media screen and (min-width: 1024px) {
+    align-items: center;
+    margin-bottom: 1.25rem;
+    transform: rotate(180deg);
+    writing-mode: vertical-lr;
+  }
 `;
 
 const Image = styled.img`
-  width: clamp(2.5rem, 3.3rem, 4rem);
-  padding-top: 0.5rem;
+  margin-top: 0.938rem;
+  width: clamp(2.5rem, 4.5vw, 4rem);
 `;
 
 const SportLink = styled.div`
   display: flex;
-  flex-direction: column;
-  padding: 5.5rem 1.875rem;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 0.625rem;
+
+  @media screen and (min-width: 1024px) {
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+  }
 `;
 
 export const SideNavigationBar = () => {

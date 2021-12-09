@@ -2,7 +2,13 @@ import styled from 'styled-components';
 import Yoga from '../../assets/icon-bike.svg';
 import {colors} from '../../utils/style/colors';
 
-const ElementsWrapper = styled.div``;
+const ElementsWrapper = styled.div`
+  margin-bottom: 1.25rem;
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 0rem;
+    width: 25%;
+  }
+`;
 const ElementCard = styled.div`
   display: flex;
   background-color: ${colors.lightBackground};
