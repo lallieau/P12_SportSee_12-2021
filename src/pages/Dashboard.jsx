@@ -1,12 +1,14 @@
 import styled from 'styled-components';
+import {colors} from '../utils/style/colors';
+import {SEO} from '../utils/style/SEO';
+
+import {Layout} from '../components/Layout';
 import {SideNavigationBar} from '../components/Navigation/SideNavigationBar';
-import {KeyFigures} from '../components/Statistics/KeyFigures';
+import {KeyData} from '../components/Statistics/KeyData';
 import {Activity} from '../components/Statistics/Activity';
 import {AverageSession} from '../components/Statistics/AverageSession';
 import {Performance} from '../components/Statistics/Performance';
 import {ScoreDay} from '../components/Statistics/ScoreDay';
-import {Layout} from '../components/Layout';
-import {colors} from '../utils/style/colors';
 
 const DashboardLayout = styled.main`
   display: flex;
@@ -18,7 +20,9 @@ const DashboardLayout = styled.main`
   }
 `;
 
-const Header = styled.div``;
+const Header = styled.div`
+  padding-bottom: 30px;
+`;
 const HeaderTitle = styled.h1``;
 const HeaderText = styled.p`
   font-weight: 400;
@@ -28,37 +32,26 @@ const UserName = styled.span`
   color: ${colors.primary};
 `;
 const Contents = styled.div`
-  min-height: 100vh;
-  padding: clamp(0.625rem, 1.5vw, 4.5rem);
+  min-height: 90vh;
+  padding: clamp(1.625rem, 3.5vw, 6.5rem);
+  padding-top: 1rem;
 `;
 const Statistics = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
-
-  @media screen and (min-width: 1024px) {
-    flex-direction: row;
-  }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
 `;
 const StatisticsGraphics = styled.div`
-  @media screen and (min-width: 1024px) {
-    width: 75%;
-  }
+  grid-area: 1 / 1 / 5 / 4;
+  display: grid;
+  gap: 24px;
 `;
 const Analysis = styled.div`
-  align-items: center;
+  grid-area: 3 / 1 / 5 / 4;
   display: flex;
-  flex-direction: column;
-  gap: 0.938rem;
-  margin: 1.25rem 0rem;
-
-  @media screen and (min-width: 600px) {
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 1.25rem 0rem 0rem;
-  }
-  @media screen and (min-width: 1440px) {
-    margin-top: 4.375rem;
-  }
+  grid-column-gap: 24px;
 `;
 
 const Heading = () => {
@@ -85,21 +78,24 @@ const UserStats = () => {
           <ScoreDay />
         </Analysis>
       </StatisticsGraphics>
-      <KeyFigures />
+      <KeyData />
     </Statistics>
   );
 };
 
 export const Dashboard = () => {
   return (
-    <Layout title={'Dashboard de Thomas'}>
-      <DashboardLayout>
-        <SideNavigationBar />
-        <Contents>
-          <Heading />
-          <UserStats />
-        </Contents>
-      </DashboardLayout>
-    </Layout>
+    <>
+      <SEO title="Dashboard" description="Bienvenue sur votre Dashboard" />
+      <Layout title={'Dashboard de Thomas'}>
+        <DashboardLayout>
+          <SideNavigationBar />
+          <Contents>
+            <Heading />
+            <UserStats />
+          </Contents>
+        </DashboardLayout>
+      </Layout>
+    </>
   );
 };

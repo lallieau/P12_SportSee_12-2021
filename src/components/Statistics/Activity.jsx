@@ -49,13 +49,51 @@ const data = [
 ];
 
 const ActivityWrapper = styled.div`
+  grid-area: 1 / 1 / 3 / 4;
   background-color: ${colors.lightBackground};
   border-radius: 5px;
   padding 10px;
-  margin-bottom: 10px;
 `;
-const ActivityTitle = styled.p``;
-const ActivityHeading = styled.div``;
+const Heading = styled.div`
+  align-items: center;
+  display: flex;
+  font-size: clamp(0.625rem, 0.972vw, 1rem);
+  font-weight: 500;
+  justify-content: space-between;
+  margin-bottom: 20px;
+`;
+const Title = styled.p`
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  font-weight: 500;
+  margin-left: 0.313rem;
+  @media screen and (min-width: 375px) {
+    margin-left: 2.188rem;
+    margin-right: 2.188rem;
+  }
+`;
+const Legend = styled.div`
+  align-items: center;
+  display: flex;
+  margin-right: 0.313rem;
+  @media screen and (min-width: 375px) {
+    margin-right: 2.188rem;
+  }
+`;
+
+const Bullet = styled.span`
+  color: ${props => props.theme.color};
+  font-size: 2.5rem;
+  font-weight: 500;
+`;
+
+const ToolTipLabel = styled.div`
+  background: ${colors.primary};
+  color: ${colors.third};
+  font-size: 0.438rem;
+  font-weight: 500;
+  margin: 0.313rem;
+  padding: 0.313rem;
+`;
 
 const TransformDate = tickItem => {
   let formattedDate = '';
@@ -65,6 +103,18 @@ const TransformDate = tickItem => {
     formattedDate = `${parts[2].replace(/^0+/, '')}`;
   }
   return formattedDate;
+};
+
+const CustomTooltip = ({active, payload}) => {
+  if (active && payload && payload.length) {
+    return (
+      <ToolTipLabel>
+        <p>{`${payload[0].value} kCal`}</p>
+        <p>{`${payload[1].value} Kg`}</p>
+      </ToolTipLabel>
+    );
+  }
+  return null;
 };
 
 const ActivityGraphics = () => {
@@ -100,7 +150,7 @@ const ActivityGraphics = () => {
         />
         <Tooltip
           dy={4}
-          content={''}
+          content={<CustomTooltip />}
           cursor={{fill: 'rgba(196, 196, 196, 0.5)'}}
         />
         <CartesianGrid stroke="#DEDEDE" strokeDasharray="3" vertical={false} />
@@ -125,12 +175,23 @@ const ActivityGraphics = () => {
   );
 };
 
+const ActivityHeading = () => {
+  return (
+    <Heading>
+      <Title>Activité quotidienne</Title>
+      <Legend>
+        <Bullet theme={{color: colors.secondary}}>•</Bullet> Poids (Kg)
+        <Bullet theme={{color: colors.primary}}>•</Bullet> Calories brûlées
+        (kCal)
+      </Legend>
+    </Heading>
+  );
+};
+
 export const Activity = () => {
   return (
     <ActivityWrapper>
-      <ActivityHeading>
-        <ActivityTitle>Activité quotidienne</ActivityTitle>
-      </ActivityHeading>
+      <ActivityHeading />
       <ActivityGraphics />
     </ActivityWrapper>
   );

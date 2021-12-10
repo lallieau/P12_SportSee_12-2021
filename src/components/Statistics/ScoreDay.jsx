@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import {colors} from '../../utils/style/colors';
 
 const ScoreDayWrapper = styled.div`
+  grid-area: 3 / 3 / 5 / 4;
   border-radius: 5px;
-  height: 14.063rem;
+  // height: 100%
   width: 100%;
   position: relative;
   padding: 10px;
@@ -37,10 +38,10 @@ export const ScoreDay = () => {
   return (
     <ScoreDayWrapper>
       <ScoreHeading>Score</ScoreHeading>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height={220}>
         <RadialBarChart
-          width={700}
-          height={350}
+          width="100%"
+          height="100%"
           startAngle={90}
           endAngle={450}
           innerRadius={50}

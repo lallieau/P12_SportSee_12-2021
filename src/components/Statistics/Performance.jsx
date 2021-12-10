@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+import {colors} from '../../utils/style/colors';
 import {
   RadarChart,
   PolarGrid,
@@ -5,15 +7,14 @@ import {
   PolarAngleAxis,
   Radar,
 } from 'recharts';
-import styled from 'styled-components';
-import {colors} from '../../utils/style/colors';
 
 const PerformanceWrapper = styled.div`
+  grid-area: 3 / 2 / 5 / 3;
   background: #282d30;
   border-radius: 5px;
   width: 100%;
   position: relative;
-  height: 14.063rem;
+  // height: 100%;
   padding: 10px;
 `;
 
@@ -61,8 +62,12 @@ const reverseActivityOrder = [...data].sort((a, b) => b.kind - a.kind);
 export const Performance = () => {
   return (
     <PerformanceWrapper>
-      <ResponsiveContainer width="100%" height="100%">
-        <RadarChart outerRadius={90} data={reverseActivityOrder}>
+      <ResponsiveContainer width="100%" height={220}>
+        <RadarChart
+          outerRadius={90}
+          data={reverseActivityOrder}
+          width="100%"
+          height="100%">
           <PolarGrid radialLines={false} />
           <PolarAngleAxis
             dataKey="kind"
