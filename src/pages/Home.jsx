@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import logo from '../assets/logo-sportsee.svg';
-import {SEO} from '../utils/style/SEO';
 import {Link} from 'react-router-dom';
 import {Layout} from '../components/Layout';
 
@@ -12,17 +11,16 @@ const Contents = styled.main`
   align-items: center;
   margin-top: 10rem;
 `;
+
 const Logo = styled.img``;
 const Title = styled.h1``;
 
 export const Home = () => {
   return (
     <>
-      <SEO
-        title="Accueil"
-        description="Bienvenue sur la page d'accueil de SportSee"
-      />
-      <Layout title={'SportSee - Accueil'}>
+      <Layout
+        title={'Accueil'}
+        description={"Bienvenue sur la page d'accueil de SportSee"}>
         <Contents>
           <Logo src={logo} alt="logo sportsee" />
           <Title>Bienvenue sur SportSee !</Title>

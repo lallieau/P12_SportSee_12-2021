@@ -1,24 +1,12 @@
 import styled from 'styled-components';
 import {colors} from '../utils/style/colors';
-import {SEO} from '../utils/style/SEO';
-
 import {Layout} from '../components/Layout';
-import {SideNavigationBar} from '../components/Navigation/SideNavigationBar';
 import {KeyData} from '../components/Statistics/KeyData';
 import {Activity} from '../components/Statistics/Activity';
 import {AverageSession} from '../components/Statistics/AverageSession';
 import {Performance} from '../components/Statistics/Performance';
 import {ScoreDay} from '../components/Statistics/ScoreDay';
-
-const DashboardLayout = styled.main`
-  display: flex;
-  flex-direction: column-reverse;
-
-  @media screen and (min-width: 1024px) {
-    display: grid;
-    grid-template-columns: clamp(3.5rem, 8vw, 7.5rem) 1fr;
-  }
-`;
+import {useMockData} from '../mock/UseMockData';
 
 const Header = styled.div`
   padding-bottom: 30px;
@@ -68,17 +56,19 @@ const Heading = () => {
 };
 
 const UserStats = () => {
+  const userData = useMockData();
+
   return (
     <Statistics>
       <StatisticsGraphics>
-        <Activity />
+        <Activity activityData={userData.getActivity} />
         <Analysis>
-          <AverageSession />
-          <Performance />
-          <ScoreDay />
+          <AverageSession averageData={userData.getAverage} />
+          <Performance performanceData={userData.getPerformance} />
+          <ScoreDay score={userData.getScore} />
         </Analysis>
       </StatisticsGraphics>
-      <KeyData />
+      <KeyData keyData={userData.getKeyData} />
     </Statistics>
   );
 };
@@ -86,15 +76,14 @@ const UserStats = () => {
 export const Dashboard = () => {
   return (
     <>
-      <SEO title="Dashboard" description="Bienvenue sur votre Dashboard" />
-      <Layout title={'Dashboard de Thomas'}>
-        <DashboardLayout>
-          <SideNavigationBar />
-          <Contents>
-            <Heading />
-            <UserStats />
-          </Contents>
-        </DashboardLayout>
+      <Layout
+        title={'Dashboard'}
+        isSideNavigation
+        description={'Bienvenue sur votre Dashboard'}>
+        <Contents>
+          <Heading />
+          <UserStats />
+        </Contents>
       </Layout>
     </>
   );

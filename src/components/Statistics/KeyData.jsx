@@ -1,17 +1,9 @@
 import styled from 'styled-components';
 import {colors} from '../../utils/style/colors';
-
 import calories from '../../assets/calories-icon.svg';
 import proteines from '../../assets/protein-icon.svg';
 import glucides from '../../assets/carbs-icon.svg';
 import lipides from '../../assets/fat-icon.svg';
-
-const data = {
-  calorieCount: 1930,
-  proteinCount: 155,
-  carbohydrateCount: 290,
-  lipidCount: 50,
-};
 
 const ElementsWrapper = styled.div`
   grid-area: 1 / 4 / 5 / 5;
@@ -78,7 +70,7 @@ const ElementCategory = styled.p`
   margin: unset;
 `;
 
-export const KeyData = () => {
+export const KeyData = ({keyData}) => {
   const categories = ['Calories', 'Protéines', 'Glucides', 'Lipides'];
   const icon = [calories, proteines, glucides, lipides];
 
@@ -90,7 +82,7 @@ export const KeyData = () => {
             <Image src={icon[index]} alt="" />
             <ElementText>
               <ElementValue>
-                {Object.values(data)[index]}
+                {Object.values(keyData)[index]}
                 {index === 0 ? 'kCal' : 'g'}
               </ElementValue>
               <ElementCategory>{category}</ElementCategory>

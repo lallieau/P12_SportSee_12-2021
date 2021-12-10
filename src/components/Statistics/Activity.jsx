@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import {colors} from '../../utils/style/colors';
+import {formatDate} from '../../utils/Formatting';
+
 import {
   BarChart,
   Bar,
@@ -9,44 +11,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-
-const data = [
-  {
-    day: '2020-07-01',
-    kilogram: 80,
-    calories: 240,
-  },
-  {
-    day: '2020-07-02',
-    kilogram: 80,
-    calories: 220,
-  },
-  {
-    day: '2020-07-03',
-    kilogram: 81,
-    calories: 280,
-  },
-  {
-    day: '2020-07-04',
-    kilogram: 81,
-    calories: 290,
-  },
-  {
-    day: '2020-07-05',
-    kilogram: 80,
-    calories: 160,
-  },
-  {
-    day: '2020-07-06',
-    kilogram: 78,
-    calories: 162,
-  },
-  {
-    day: '2020-07-07',
-    kilogram: 76,
-    calories: 390,
-  },
-];
 
 const ActivityWrapper = styled.div`
   grid-area: 1 / 1 / 3 / 4;
@@ -80,8 +44,11 @@ const Legend = styled.div`
   }
 `;
 
+// color: ${({props, theme}) =>
+//     props.isSecondary ? theme.color.secondary : theme.color.primary};
+
 const Bullet = styled.span`
-  color: ${props => props.theme.color};
+  color: ${colors.primary};
   font-size: 2.5rem;
   font-weight: 500;
 `;
@@ -95,16 +62,6 @@ const ToolTipLabel = styled.div`
   padding: 0.313rem;
 `;
 
-const TransformDate = tickItem => {
-  let formattedDate = '';
-
-  if (tickItem) {
-    let parts = tickItem.split('-');
-    formattedDate = `${parts[2].replace(/^0+/, '')}`;
-  }
-  return formattedDate;
-};
-
 const CustomTooltip = ({active, payload}) => {
   if (active && payload && payload.length) {
     return (
@@ -117,13 +74,13 @@ const CustomTooltip = ({active, payload}) => {
   return null;
 };
 
-const ActivityGraphics = () => {
+const ActivityGraphics = ({activity}) => {
   return (
     <ResponsiveContainer width="100%" height={200}>
-      <BarChart barGap={5} width="100%" data={data}>
+      <BarChart barGap={5} width="100%" data={activity}>
         <XAxis
           dataKey="day"
-          tickFormatter={TransformDate}
+          tickFormatter={formatDate}
           tickLine={false}
           style={{fontSize: '14px'}}
           stroke="#9B9EAC"
@@ -180,19 +137,18 @@ const ActivityHeading = () => {
     <Heading>
       <Title>Activité quotidienne</Title>
       <Legend>
-        <Bullet theme={{color: colors.secondary}}>•</Bullet> Poids (Kg)
-        <Bullet theme={{color: colors.primary}}>•</Bullet> Calories brûlées
-        (kCal)
+        <Bullet isSecondary>•</Bullet> Poids (Kg)
+        <Bullet>•</Bullet> Calories brûlées (kCal)
       </Legend>
     </Heading>
   );
 };
 
-export const Activity = () => {
+export const Activity = ({activityData}) => {
   return (
     <ActivityWrapper>
       <ActivityHeading />
-      <ActivityGraphics />
+      <ActivityGraphics activity={activityData} />
     </ActivityWrapper>
   );
 };

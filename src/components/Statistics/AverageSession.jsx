@@ -7,39 +7,9 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import {formatDay} from '../../utils/Formatting';
 import styled from 'styled-components';
 import {colors} from '../../utils/style/colors';
-
-const data = [
-  {
-    day: 1,
-    sessionLength: 30,
-  },
-  {
-    day: 2,
-    sessionLength: 23,
-  },
-  {
-    day: 3,
-    sessionLength: 45,
-  },
-  {
-    day: 4,
-    sessionLength: 50,
-  },
-  {
-    day: 5,
-    sessionLength: 0,
-  },
-  {
-    day: 6,
-    sessionLength: 0,
-  },
-  {
-    day: 7,
-    sessionLength: 60,
-  },
-];
 
 const AverageSessionWrapper = styled.div`
   grid-area: 3 / 1 / 5 / 2;
@@ -72,11 +42,6 @@ const ToolTipLabel = styled.label`
   width: 1.563rem;
 `;
 
-const TransformDay = tickItem => {
-  const Day = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-  if (tickItem) return Day[tickItem - 1];
-};
-
 const CustomTooltip = ({active, payload}) => {
   if (active && payload) {
     return <ToolTipLabel>{`${payload[0].value} min`}</ToolTipLabel>;
@@ -84,7 +49,7 @@ const CustomTooltip = ({active, payload}) => {
   return null;
 };
 
-export const AverageSession = () => {
+export const AverageSession = ({averageData}) => {
   return (
     <AverageSessionWrapper>
       <AverageHeading>Durée moyenne des sessions</AverageHeading>
@@ -92,13 +57,13 @@ export const AverageSession = () => {
         <LineChart
           width="100%"
           height="100%"
-          data={data}
+          data={averageData}
           margin={{top: 0, right: 8, bottom: 0, left: -53}}>
           <XAxis
             axisLine={false}
             tickLine={false}
             dataKey="day"
-            tickFormatter={TransformDay}
+            tickFormatter={formatDay}
             stroke={`${colors.third}`}
             style={{
               fontSize: '12px',

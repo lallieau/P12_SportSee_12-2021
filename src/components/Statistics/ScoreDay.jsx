@@ -23,16 +23,10 @@ const ScoreHeading = styled.h2`
   width: 10.625rem;
 `;
 
-const data = [
-  {
-    todayScore: 0.12,
-  },
-];
-
-export const ScoreDay = () => {
+export const ScoreDay = ({score}) => {
   const scoreValue = [
     {value: 1, fill: colors.lightBackground},
-    {value: data.todayScore, fill: '#FF0000'},
+    {value: score.todayScore, fill: '#FF0000'},
   ];
 
   return (

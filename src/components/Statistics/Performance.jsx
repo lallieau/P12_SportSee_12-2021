@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {colors} from '../../utils/style/colors';
+import {reverseActivityOrder, formatKind} from '../../utils/Formatting';
 import {
   RadarChart,
   PolarGrid,
@@ -18,60 +19,19 @@ const PerformanceWrapper = styled.div`
   padding: 10px;
 `;
 
-const data = [
-  {
-    value: 80,
-    kind: 1,
-  },
-  {
-    value: 120,
-    kind: 2,
-  },
-  {
-    value: 140,
-    kind: 3,
-  },
-  {
-    value: 50,
-    kind: 4,
-  },
-  {
-    value: 200,
-    kind: 5,
-  },
-  {
-    value: 90,
-    kind: 6,
-  },
-];
-
-const TransformKind = tickItem => {
-  const Kind = [
-    'Cardio',
-    'Energie',
-    'Endurance',
-    'Force',
-    'Vitesse',
-    'Intensité',
-  ];
-  if (tickItem) return Kind[tickItem - 1];
-};
-
-const reverseActivityOrder = [...data].sort((a, b) => b.kind - a.kind);
-
-export const Performance = () => {
+export const Performance = ({performanceData}) => {
   return (
     <PerformanceWrapper>
       <ResponsiveContainer width="100%" height={220}>
         <RadarChart
           outerRadius={90}
-          data={reverseActivityOrder}
+          data={reverseActivityOrder(performanceData)}
           width="100%"
           height="100%">
           <PolarGrid radialLines={false} />
           <PolarAngleAxis
             dataKey="kind"
-            tickFormatter={TransformKind}
+            tickFormatter={formatKind}
             stroke={`${colors.third}`}
             tickLine={false}
             style={{fontSize: '12px', fontWeight: '500'}}
