@@ -1,4 +1,4 @@
-import {userData} from './mock';
+import {userData} from './mockData';
 
 export const useMockData = () => {
   const getActivity = userData.activities.map(activity => activity);

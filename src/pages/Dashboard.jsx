@@ -55,25 +55,25 @@ const Heading = () => {
   );
 };
 
-const UserStats = () => {
-  const userData = useMockData();
-
+const UserStats = ({user}) => {
   return (
     <Statistics>
       <StatisticsGraphics>
-        <Activity activityData={userData.getActivity} />
+        <Activity activityData={user.getActivity} />
         <Analysis>
-          <AverageSession averageData={userData.getAverage} />
-          <Performance performanceData={userData.getPerformance} />
-          <ScoreDay score={userData.getScore} />
+          <AverageSession averageData={user.getAverage} />
+          <Performance performanceData={user.getPerformance} />
+          <ScoreDay score={user.getScore} />
         </Analysis>
       </StatisticsGraphics>
-      <KeyData keyData={userData.getKeyData} />
+      <KeyData keyData={user.getKeyData} />
     </Statistics>
   );
 };
 
 export const Dashboard = () => {
+  const userData = useMockData();
+
   return (
     <>
       <Layout
@@ -82,7 +82,7 @@ export const Dashboard = () => {
         description={'Bienvenue sur votre Dashboard'}>
         <Contents>
           <Heading />
-          <UserStats />
+          <UserStats user={userData} />
         </Contents>
       </Layout>
     </>
