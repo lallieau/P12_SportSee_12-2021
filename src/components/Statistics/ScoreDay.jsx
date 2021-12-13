@@ -1,20 +1,21 @@
 import {ResponsiveContainer, RadialBarChart, RadialBar} from 'recharts';
 import styled from 'styled-components';
-import {colors} from '../../utils/style/colors';
 
 const ScoreDayWrapper = styled.div`
   grid-area: 3 / 3 / 5 / 4;
   border-radius: 5px;
-  // height: 100%
   width: 100%;
   position: relative;
-  padding: 10px;
-  background: ${colors.lightBackground};
+  padding: 0.625rem;
+  background: ${props => props.theme.colors.lightBackground};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ScoreHeading = styled.h2`
-  color: ${colors.secondary};
-  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  color: ${props => props.theme.colors.secondary};
+  font-size: 1.125rem;
   font-weight: 500;
   left: 0.938rem;
   opacity: 0.8;
@@ -23,26 +24,55 @@ const ScoreHeading = styled.h2`
   width: 10.625rem;
 `;
 
+const ScoreLegend = styled.div`
+  background: ${props => props.theme.colors.white};
+  text-align: center;
+  border-radius: 50%;
+  position: absolute;
+  height: 8.125rem;
+  width: 8.125rem;
+  z-index: 1;
+`;
+const ScorePercentage = styled.p`
+  color: ${props => props.theme.colors.secondary};
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1.928rem 0rem 0rem 0rem;
+`;
+const ScoreText = styled.p`
+  color: ${props => props.theme.colors.third};
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  margin: 0rem;
+`;
+
 export const ScoreDay = ({score}) => {
   const scoreValue = [
-    {value: 1, fill: colors.lightBackground},
+    {value: 1, fill: '#fff'},
     {value: score.todayScore, fill: '#FF0000'},
   ];
 
   return (
     <ScoreDayWrapper>
       <ScoreHeading>Score</ScoreHeading>
-      <ResponsiveContainer width="100%" height={220}>
+      <ScoreLegend>
+        <ScorePercentage>{100 * score}%</ScorePercentage>
+        <ScoreText>
+          de votre <br />
+          objectif{' '}
+        </ScoreText>
+      </ScoreLegend>
+      <ResponsiveContainer width="100%" height={200}>
         <RadialBarChart
-          width="100%"
-          height="100%"
           startAngle={90}
-          endAngle={450}
-          innerRadius={50}
-          outerRadius={110}
-          barSize={12}
+          endAngle={400}
+          innerRadius={40}
+          outerRadius={100}
+          barSize={10}
           data={scoreValue}>
           <RadialBar
+            isAnimationActive={false}
             cornerRadius={50}
             dataKey="value"
             background={{fill: '#FCFCFC'}}

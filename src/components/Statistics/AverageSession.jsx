@@ -9,20 +9,19 @@ import {
 } from 'recharts';
 import {formatDay} from '../../utils/Formatting';
 import styled from 'styled-components';
-import {colors} from '../../utils/style/colors';
 
 const AverageSessionWrapper = styled.div`
   grid-area: 3 / 1 / 5 / 2;
-  background: ${colors.primary};
+  background: ${props => props.theme.colors.primary};
   border-radius: 5px;
   width: 100%;
   position: relative;
-  padding: 10px;
+  padding: 0.625rem;
 `;
 
 const AverageHeading = styled.h2`
-  color: ${colors.third};
-  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  color: ${props => props.theme.colors.white};
+  font-size: 1.125rem;
   font-weight: 500;
   left: 0.938rem;
   opacity: 0.8;
@@ -32,13 +31,13 @@ const AverageHeading = styled.h2`
 `;
 
 const ToolTipLabel = styled.label`
-  background: ${colors.third};
-  color: ${colors.secondary};
-  font-size: 0.438rem;
+  background: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.black};
+  font-size: 0.726rem;
   font-weight: 500;
   height: 1.25rem;
   line-height: 0.25rem;
-  padding: 0.125rem;
+  padding: 0.525rem;
   width: 1.563rem;
 `;
 
@@ -53,10 +52,8 @@ export const AverageSession = ({averageData}) => {
   return (
     <AverageSessionWrapper>
       <AverageHeading>Durée moyenne des sessions</AverageHeading>
-      <ResponsiveContainer width="100%" height={220}>
+      <ResponsiveContainer width="100%" height={200}>
         <LineChart
-          width="100%"
-          height="100%"
           data={averageData}
           margin={{top: 0, right: 8, bottom: 0, left: -53}}>
           <XAxis
@@ -64,7 +61,7 @@ export const AverageSession = ({averageData}) => {
             tickLine={false}
             dataKey="day"
             tickFormatter={formatDay}
-            stroke={`${colors.third}`}
+            stroke="#fff"
             style={{
               fontSize: '12px',
               fontWeight: '500',
@@ -80,7 +77,7 @@ export const AverageSession = ({averageData}) => {
           <Tooltip
             content={<CustomTooltip />}
             cursor={{
-              stroke: `${colors.secondary}`,
+              stroke: '#000',
               strokeOpacity: 0.1,
               strokeWidth: '45',
             }}
@@ -91,10 +88,9 @@ export const AverageSession = ({averageData}) => {
             vertical={false}
           />
           <Line
-            name="average session"
             type="monotone"
             dataKey="sessionLength"
-            stroke={`${colors.third}`}
+            stroke="#fff"
             strokeWidth={2}
             dot={false}
             activeDot={{r: 3, strokeWidth: 9, strokeOpacity: 0.3}}

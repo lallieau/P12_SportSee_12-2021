@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import {colors} from '../../utils/style/colors';
 import {formatDate} from '../../utils/Formatting';
-
 import {
   BarChart,
   Bar,
@@ -14,49 +12,44 @@ import {
 
 const ActivityWrapper = styled.div`
   grid-area: 1 / 1 / 3 / 4;
-  background-color: ${colors.lightBackground};
+  background-color: ${props => props.theme.colors.lightBackground};
   border-radius: 5px;
-  padding 10px;
+  padding 0.625rem;
 `;
 const Heading = styled.div`
   align-items: center;
   display: flex;
-  font-size: clamp(0.625rem, 0.972vw, 1rem);
   font-weight: 500;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 `;
 const Title = styled.p`
-  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  font-size: 1.125rem;
   font-weight: 500;
-  margin-left: 0.313rem;
-  @media screen and (min-width: 375px) {
-    margin-left: 2.188rem;
-    margin-right: 2.188rem;
-  }
+  margin-left: 2.188rem;
+  margin-right: 2.188rem;
 `;
 const Legend = styled.div`
   align-items: center;
   display: flex;
-  margin-right: 0.313rem;
-  @media screen and (min-width: 375px) {
-    margin-right: 2.188rem;
-  }
+  margin-right: 1.313rem;
+  color: ${props => props.theme.colors.third};
+  font-size: 0.8rem;
 `;
 
-// color: ${({props, theme}) =>
-//     props.isSecondary ? theme.color.secondary : theme.color.primary};
-
 const Bullet = styled.span`
-  color: ${colors.primary};
+  color: ${props =>
+    props.isFirstBullet
+      ? props.theme.colors.black
+      : props.theme.colors.primary};
   font-size: 2.5rem;
   font-weight: 500;
 `;
 
 const ToolTipLabel = styled.div`
-  background: ${colors.primary};
-  color: ${colors.third};
-  font-size: 0.438rem;
+  background: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.white};
+  font-size: 0.726rem;
   font-weight: 500;
   margin: 0.313rem;
   padding: 0.313rem;
@@ -115,7 +108,7 @@ const ActivityGraphics = ({activity}) => {
           yAxisId="calories"
           name="kCal"
           dataKey="calories"
-          fill={colors.secondary}
+          fill="#000"
           barSize={8}
           radius={[50, 50, 0, 0]}
         />
@@ -123,7 +116,7 @@ const ActivityGraphics = ({activity}) => {
           yAxisId="poids"
           name="kg"
           dataKey="kilogram"
-          fill={colors.primary}
+          fill="#FF0000"
           barSize={8}
           radius={[50, 50, 0, 0]}
         />
@@ -137,7 +130,7 @@ const ActivityHeading = () => {
     <Heading>
       <Title>Activité quotidienne</Title>
       <Legend>
-        <Bullet isSecondary>•</Bullet> Poids (Kg)
+        <Bullet isFirstBullet>•</Bullet> Poids (Kg)
         <Bullet>•</Bullet> Calories brûlées (kCal)
       </Legend>
     </Heading>
