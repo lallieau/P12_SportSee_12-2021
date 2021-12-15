@@ -15,7 +15,7 @@ const ElementsWrapper = styled.div`
 `;
 const ElementCard = styled.div`
   display: flex;
-  background-color: ${props => props.theme.colors.lightBackground};
+  background-color: ${({theme}) => theme.colors.lightBackground};
   border-radius: 5px;
   padding-left: 1.875rem;
   align-items: center;
@@ -30,16 +30,16 @@ const ElementText = styled.div`
   margin-left: 1.5rem;
 `;
 const ElementValue = styled.p`
-  color: ${props => props.theme.colors.secondary};
-  font-size: ${props => props.theme.fontSize.small};
+  color: ${({theme}) => theme.colors.secondary};
+  font-size: ${({theme}) => theme.fontSize.sm};
   font-style: normal;
-  font-weight: ${props => props.theme.fontWeight.extraBold};
+  font-weight: ${({theme}) => theme.fontWeight.extraBold};
   line-height: 0;
 `;
 const ElementCategory = styled.p`
-  color: ${props => props.theme.colors.third};
-  font-size: ${props => props.theme.fontSize.tiny};
-  font-weight: ${props => props.theme.fontWeight.bold};
+  color: ${({theme}) => theme.colors.third};
+  font-size: ${({theme}) => theme.fontSize.xs};
+  font-weight: ${({theme}) => theme.fontWeight.bold};
 `;
 
 export const KeyData = ({keyData}) => {

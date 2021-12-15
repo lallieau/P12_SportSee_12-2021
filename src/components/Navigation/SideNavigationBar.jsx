@@ -7,16 +7,16 @@ import Swim from '../../assets/icon-swim.svg';
 import Gym from '../../assets/icon-dumbell.svg';
 
 const SportGroup = styled.div`
-  background-color: ${props => props.theme.colors.black};
+  background-color: ${({theme}) => theme.colors.black};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: grid;
 `;
 
 const Copyright = styled.p`
-  color: ${props => props.theme.colors.white};
+  color: ${({theme}) => theme.colors.white};
   display: flex;
-  font-size: ${props => props.theme.fontSize.tiny};
-  font-weight: ${props => props.theme.fontWeight.bold};
+  font-size: ${({theme}) => theme.fontSize.xs};
+  font-weight: ${({theme}) => theme.fontWeight.bold};
   justify-content: center;
   align-items: center;
   margin-bottom: 1.25rem;

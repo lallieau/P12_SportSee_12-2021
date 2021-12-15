@@ -7,16 +7,16 @@ const ScoreDayWrapper = styled.div`
   width: 100%;
   position: relative;
   padding: 0.625rem;
-  background: ${props => props.theme.colors.lightBackground};
+  background: ${({theme}) => theme.colors.lightBackground};
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 const ScoreHeading = styled.h2`
-  color: ${props => props.theme.colors.secondary};
-  font-size: ${props => props.theme.fontSize.small};
-  font-weight: ${props => props.theme.fontWeight.bold};
+  color: ${({theme}) => theme.colors.secondary};
+  font-size: ${({theme}) => theme.fontSize.sm};
+  font-weight: ${({theme}) => theme.fontWeight.bold};
   left: 0.938rem;
   opacity: 0.8;
   position: absolute;
@@ -25,7 +25,7 @@ const ScoreHeading = styled.h2`
 `;
 
 const ScoreLegend = styled.div`
-  background: ${props => props.theme.colors.white};
+  background: ${({theme}) => theme.colors.white};
   text-align: center;
   border-radius: 50%;
   position: absolute;
@@ -34,15 +34,15 @@ const ScoreLegend = styled.div`
   z-index: 1;
 `;
 const ScorePercentage = styled.p`
-  color: ${props => props.theme.colors.secondary};
-  font-size: ${props => props.theme.fontSize.medium};
-  font-weight: ${props => props.theme.fontWeight.extraBold};
+  color: ${({theme}) => theme.colors.secondary};
+  font-size: ${({theme}) => theme.fontSize.md};
+  font-weight: ${({theme}) => theme.fontWeight.extraBold};
   margin: 1.528rem 0rem 0rem 0rem;
 `;
 const ScoreText = styled.p`
-  color: ${props => props.theme.colors.third};
-  font-size: ${props => props.theme.fontSize.small};
-  font-weight: ${props => props.theme.fontWeight.bold};
+  color: ${({theme}) => theme.colors.third};
+  font-size: ${({theme}) => theme.fontSize.sm};
+  font-weight: ${({theme}) => theme.fontWeight.bold};
   line-height: 1.25rem;
   margin: 0rem;
 `;

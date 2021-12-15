@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from 'react-router-dom';
+
 import {createGlobalStyle} from 'styled-components';
+import {ThemeProvider as StyleComponentThemeProvider} from 'styled-components';
+import {theme} from '../src/utils/theme';
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -12,10 +16,22 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
+const ThemeProvider = ({children, theme}) => {
+  return (
+    <StyleComponentThemeProvider theme={theme}>
+      <>
+        <GlobalStyle />
+        {children}
+      </>
+    </StyleComponentThemeProvider>
+  );
+};
+
 ReactDOM.render(
   <BrowserRouter>
-    <GlobalStyle />
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </BrowserRouter>,
   document.getElementById('root'),
 );

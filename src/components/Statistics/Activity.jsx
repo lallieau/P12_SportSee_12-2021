@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {formatDate} from '../../utils/Formatting';
+import {formatDate} from '../../helpers/formatting';
 import {
   BarChart,
   Bar,
@@ -12,20 +12,20 @@ import {
 
 const ActivityWrapper = styled.div`
   grid-area: 1 / 1 / 3 / 4;
-  background-color: ${props => props.theme.colors.lightBackground};
+  background-color: ${({theme}) => theme.colors.lightBackground};
   border-radius: 5px;
   padding 0.625rem;
 `;
 const Heading = styled.div`
   align-items: center;
   display: flex;
-  font-weight: ${props => props.theme.fontWeight.bold};
+  font-weight: ${({theme}) => theme.fontWeight.bold};
   justify-content: space-between;
   margin-bottom: 1.25rem;
 `;
 const Title = styled.p`
-  font-size: ${props => props.theme.fontSize.small};
-  font-weight: ${props => props.theme.fontWeight.bold};
+  font-size: ${({theme}) => theme.fontSize.sm};
+  font-weight: ${({theme}) => theme.fontWeight.bold};
   margin-left: 2.188rem;
   margin-right: 2.188rem;
 `;
@@ -33,8 +33,8 @@ const Legend = styled.div`
   align-items: center;
   display: flex;
   margin-right: 1.313rem;
-  color: ${props => props.theme.colors.third};
-  font-size: ${props => props.theme.fontSize.tiny};
+  color: ${({theme}) => theme.colors.third};
+  font-size: ${({theme}) => theme.fontSize.xs};
 `;
 
 const Bullet = styled.span`
@@ -42,15 +42,15 @@ const Bullet = styled.span`
     props.isFirstBullet
       ? props.theme.colors.black
       : props.theme.colors.primary};
-  font-size: ${props => props.theme.fontSize.large};
-  font-weight: ${props => props.theme.fontWeight.bold};
+  font-size: ${({theme}) => theme.fontSize.lg};
+  font-weight: ${({theme}) => theme.fontWeight.bold};
 `;
 
 const ToolTipLabel = styled.div`
-  background: ${props => props.theme.colors.primary};
-  color: ${props => props.theme.colors.white};
-  font-size: ${props => props.theme.fontSize.small};
-  font-weight: ${props => props.theme.fontWeight.bold};
+  background: ${({theme}) => theme.colors.primary};
+  color: ${({theme}) => theme.colors.white};
+  font-size: ${({theme}) => theme.fontSize.sm};
+  font-weight: ${({theme}) => theme.fontWeight.bold};
   margin: 0.313rem;
   padding: 0.313rem;
 `;

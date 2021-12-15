@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import {reverseActivityOrder, formatKind} from '../../utils/Formatting';
+import {formatKind} from '../../helpers/formatting';
+import {reverseActivityOrder} from '../../helpers/reverseActivityOrder';
 import {
   RadarChart,
   PolarGrid,
@@ -10,7 +11,7 @@ import {
 
 const PerformanceWrapper = styled.div`
   grid-area: 3 / 2 / 5 / 3;
-  background: ${props => props.theme.colors.secondary};
+  background: ${({theme}) => theme.colors.secondary};
   border-radius: 5px;
   width: 100%;
   position: relative;

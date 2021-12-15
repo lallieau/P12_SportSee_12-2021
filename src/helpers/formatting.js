@@ -11,10 +11,6 @@ export const formatDay = day => {
   if (day) return newDayFormat[day - 1];
 };
 
-export const reverseActivityOrder = performance => {
-  return [...performance].sort((a, b) => b.kind - a.kind);
-};
-
 export const formatKind = kind => {
   const newKindFormat = [
     'Cardio',

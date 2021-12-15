@@ -8,7 +8,7 @@ const Image = styled.img`
 `;
 
 const NavGroup = styled.nav`
-  background-color: ${props => props.theme.colors.black};
+  background-color: ${({theme}) => theme.colors.black};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   height: 5.688rem;
   align-items: center;
@@ -18,14 +18,14 @@ const NavGroup = styled.nav`
 `;
 
 const NavLink = styled(Link)`
-color:  ${props => props.theme.colors.white};
-font-size: ${props => props.theme.fontSize.small};
-font-weight: ${props => props.theme.fontWeight.bold};
+color:  ${({theme}) => theme.colors.white};
+font-size: ${({theme}) => theme.fontSize.sm};
+font-weight: ${({theme}) => theme.fontWeight.bold};
 padding: 0.313rem;
 text-decoration: none;
 
 &:hover {
-  color: ${props => props.theme.colors.primary};
+  color: ${({theme}) => theme.colors.primary};
 `;
 
 export const NavigationBar = () => {

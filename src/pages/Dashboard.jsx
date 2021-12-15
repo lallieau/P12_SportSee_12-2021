@@ -5,18 +5,18 @@ import {Activity} from '../components/Statistics/Activity';
 import {AverageSession} from '../components/Statistics/AverageSession';
 import {Performance} from '../components/Statistics/Performance';
 import {ScoreDay} from '../components/Statistics/ScoreDay';
-import {useMockData} from '../mock/UseMockData';
+import {useMockData} from '../hooks/UseMockData';
 
 const Header = styled.div`
   padding-bottom: 1.875;
 `;
 const HeaderTitle = styled.h1``;
 const HeaderText = styled.p`
-  font-weight: ${props => props.theme.fontWeight.regular};
-  font-size: ${props => props.theme.fontSize.small};
+  font-weight: ${({theme}) => theme.fontWeight.regular};
+  font-size: ${({theme}) => theme.fontSize.sm};
 `;
 const UserName = styled.span`
-  color: ${props => props.theme.colors.primary};
+  color: ${({theme}) => theme.colors.primary};
 `;
 const Contents = styled.div`
   min-height: 90vh;
@@ -58,14 +58,14 @@ const UserStats = ({user}) => {
   return (
     <Statistics>
       <StatisticsGraphics>
-        <Activity activityData={user.getActivity} />
+        <Activity activityData={user.activities} />
         <Analysis>
-          <AverageSession averageData={user.getAverage} />
-          <Performance performanceData={user.getPerformance} />
-          <ScoreDay score={user.getScore} />
+          <AverageSession averageData={user.averages} />
+          <Performance performanceData={user.performances} />
+          <ScoreDay score={user.score} />
         </Analysis>
       </StatisticsGraphics>
-      <KeyData keyData={user.getKeyData} />
+      <KeyData keyData={user.keyData} />
     </Statistics>
   );
 };
@@ -81,7 +81,7 @@ export const Dashboard = () => {
         description={'Bienvenue sur votre Dashboard'}>
         <Contents>
           <Heading />
-          <UserStats user={userData} />
+          <UserStats user={userData} activity={userData} />
         </Contents>
       </Layout>
     </>

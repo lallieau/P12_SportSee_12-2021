@@ -7,12 +7,12 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import {formatDay} from '../../utils/Formatting';
+import {formatDay} from '../../helpers/formatting';
 import styled from 'styled-components';
 
 const AverageSessionWrapper = styled.div`
   grid-area: 3 / 1 / 5 / 2;
-  background: ${props => props.theme.colors.primary};
+  background: ${({theme}) => theme.colors.primary};
   border-radius: 5px;
   width: 100%;
   position: relative;
@@ -20,9 +20,9 @@ const AverageSessionWrapper = styled.div`
 `;
 
 const AverageHeading = styled.h2`
-  color: ${props => props.theme.colors.white};
-  font-size: ${props => props.theme.fontSize.small};
-  font-weight: ${props => props.theme.fontWeight.bold};
+  color: ${({theme}) => theme.colors.white};
+  font-size: ${({theme}) => theme.fontSize.sm};
+  font-weight: ${({theme}) => theme.fontWeight.bold};
   left: 0.938rem;
   opacity: 0.8;
   position: absolute;
@@ -31,10 +31,10 @@ const AverageHeading = styled.h2`
 `;
 
 const ToolTipLabel = styled.label`
-  background: ${props => props.theme.colors.white};
-  color: ${props => props.theme.colors.black};
-  font-size: ${props => props.theme.fontSize.tiny};
-  font-weight: ${props => props.theme.fontWeight.bold};
+  background: ${({theme}) => theme.colors.white};
+  color: ${({theme}) => theme.colors.black};
+  font-size: ${({theme}) => theme.fontSize.xs};
+  font-weight: ${({theme}) => theme.fontWeight.bold};
   height: 1.25rem;
   line-height: 0.25rem;
   padding: 0.525rem;
