@@ -15,8 +15,8 @@ const SportGroup = styled.div`
 const Copyright = styled.p`
   color: ${props => props.theme.colors.white};
   display: flex;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: ${props => props.theme.fontSize.tiny};
+  font-weight: ${props => props.theme.fontWeight.bold};
   justify-content: center;
   align-items: center;
   margin-bottom: 1.25rem;

@@ -21,8 +21,8 @@ const AverageSessionWrapper = styled.div`
 
 const AverageHeading = styled.h2`
   color: ${props => props.theme.colors.white};
-  font-size: 1.125rem;
-  font-weight: 500;
+  font-size: ${props => props.theme.fontSize.small};
+  font-weight: ${props => props.theme.fontWeight.bold};
   left: 0.938rem;
   opacity: 0.8;
   position: absolute;
@@ -33,8 +33,8 @@ const AverageHeading = styled.h2`
 const ToolTipLabel = styled.label`
   background: ${props => props.theme.colors.white};
   color: ${props => props.theme.colors.black};
-  font-size: 0.726rem;
-  font-weight: 500;
+  font-size: ${props => props.theme.fontSize.tiny};
+  font-weight: ${props => props.theme.fontWeight.bold};
   height: 1.25rem;
   line-height: 0.25rem;
   padding: 0.525rem;

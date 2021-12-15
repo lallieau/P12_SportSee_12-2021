@@ -15,8 +15,8 @@ const ScoreDayWrapper = styled.div`
 
 const ScoreHeading = styled.h2`
   color: ${props => props.theme.colors.secondary};
-  font-size: 1.125rem;
-  font-weight: 500;
+  font-size: ${props => props.theme.fontSize.small};
+  font-weight: ${props => props.theme.fontWeight.bold};
   left: 0.938rem;
   opacity: 0.8;
   position: absolute;
@@ -35,14 +35,14 @@ const ScoreLegend = styled.div`
 `;
 const ScorePercentage = styled.p`
   color: ${props => props.theme.colors.secondary};
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 1.928rem 0rem 0rem 0rem;
+  font-size: ${props => props.theme.fontSize.medium};
+  font-weight: ${props => props.theme.fontWeight.extraBold};
+  margin: 1.528rem 0rem 0rem 0rem;
 `;
 const ScoreText = styled.p`
   color: ${props => props.theme.colors.third};
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: ${props => props.theme.fontSize.small};
+  font-weight: ${props => props.theme.fontWeight.bold};
   line-height: 1.25rem;
   margin: 0rem;
 `;

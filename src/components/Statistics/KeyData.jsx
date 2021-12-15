@@ -31,15 +31,15 @@ const ElementText = styled.div`
 `;
 const ElementValue = styled.p`
   color: ${props => props.theme.colors.secondary};
-  font-size: 1.25rem;
+  font-size: ${props => props.theme.fontSize.small};
   font-style: normal;
-  font-weight: 700;
+  font-weight: ${props => props.theme.fontWeight.extraBold};
   line-height: 0;
 `;
 const ElementCategory = styled.p`
   color: ${props => props.theme.colors.third};
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: ${props => props.theme.fontSize.tiny};
+  font-weight: ${props => props.theme.fontWeight.bold};
 `;
 
 export const KeyData = ({keyData}) => {

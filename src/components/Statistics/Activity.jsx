@@ -19,13 +19,13 @@ const ActivityWrapper = styled.div`
 const Heading = styled.div`
   align-items: center;
   display: flex;
-  font-weight: 500;
+  font-weight: ${props => props.theme.fontWeight.bold};
   justify-content: space-between;
   margin-bottom: 1.25rem;
 `;
 const Title = styled.p`
-  font-size: 1.125rem;
-  font-weight: 500;
+  font-size: ${props => props.theme.fontSize.small};
+  font-weight: ${props => props.theme.fontWeight.bold};
   margin-left: 2.188rem;
   margin-right: 2.188rem;
 `;
@@ -34,7 +34,7 @@ const Legend = styled.div`
   display: flex;
   margin-right: 1.313rem;
   color: ${props => props.theme.colors.third};
-  font-size: 0.8rem;
+  font-size: ${props => props.theme.fontSize.tiny};
 `;
 
 const Bullet = styled.span`
@@ -42,15 +42,15 @@ const Bullet = styled.span`
     props.isFirstBullet
       ? props.theme.colors.black
       : props.theme.colors.primary};
-  font-size: 2.5rem;
-  font-weight: 500;
+  font-size: ${props => props.theme.fontSize.large};
+  font-weight: ${props => props.theme.fontWeight.bold};
 `;
 
 const ToolTipLabel = styled.div`
   background: ${props => props.theme.colors.primary};
   color: ${props => props.theme.colors.white};
-  font-size: 0.726rem;
-  font-weight: 500;
+  font-size: ${props => props.theme.fontSize.small};
+  font-weight: ${props => props.theme.fontWeight.bold};
   margin: 0.313rem;
   padding: 0.313rem;
 `;

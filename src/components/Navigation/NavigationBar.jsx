@@ -19,8 +19,8 @@ const NavGroup = styled.nav`
 
 const NavLink = styled(Link)`
 color:  ${props => props.theme.colors.white};
-font-size: 1.2rem;
-font-weight: 500;
+font-size: ${props => props.theme.fontSize.small};
+font-weight: ${props => props.theme.fontWeight.bold};
 padding: 0.313rem;
 text-decoration: none;
 

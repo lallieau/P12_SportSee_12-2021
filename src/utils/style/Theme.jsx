@@ -10,12 +10,17 @@ const theme = {
     white: '#FFF',
     lightBackground: '#F7F7F7',
   },
-  //   fonts: ['sans-serif', 'Roboto'],
-  //   fontSizes: {
-  //     small: '1em',
-  //     medium: '2em',
-  //     large: '3em',
-  //   },
+  fontSize: {
+    tiny: '0.8rem',
+    small: '1rem',
+    medium: '2rem',
+    large: '3rem',
+  },
+  fontWeight: {
+    regular: '400',
+    bold: '500',
+    extraBold: '700',
+  },
 };
 
 const Theme = ({children}) => (

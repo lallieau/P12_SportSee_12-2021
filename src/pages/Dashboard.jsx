@@ -12,8 +12,8 @@ const Header = styled.div`
 `;
 const HeaderTitle = styled.h1``;
 const HeaderText = styled.p`
-  font-weight: 400;
-  font-size: 1rem;
+  font-weight: ${props => props.theme.fontWeight.regular};
+  font-size: ${props => props.theme.fontSize.small};
 `;
 const UserName = styled.span`
   color: ${props => props.theme.colors.primary};
