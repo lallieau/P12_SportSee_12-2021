@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# P12_SportSee_12-2021
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Openclassrooms - Parcours développeur Front-end
 
-## Available Scripts
+## Projet 12 : Développez un tableau de bord d'analytics avec React
 
-In the project directory, you can run:
+### Scénario :
 
-### `npm start`
+SportSee est une startup dédiée au coaching sportif. En pleine croissance, l’entreprise va aujourd’hui lancer une nouvelle version de la page profil de l’utilisateur. Cette page va notamment permettre à l’utilisateur de suivre le nombre de sessions réalisées ainsi que le nombre de calories brûlées.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Mission :
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Travailler sur la nouvelle page de profil utilisateur du site. Utiliser les maquettes Figma et le Kanban avec les User Stories. Intégrer les US de la partie TODO.
 
-### `npm test`
+- L'objectif est de refaire la page de profil avec React.
+- Le projet intègre des graphiques sur l'activité sportive de l'utilisateur donc utiliser soit D3 soit Recharts.
+- S'assurer que le projet puisse être lu sur des écrans d'au moins 1024 par 780 pixels (pas besoin d'être responsive).
+- En ce qui concerne les données, un backend utilisant NodeJS est utilisé (voir les détails de l'installation ci-dessous). Cela permet d'effectuer des appels HTTP et de récupérer les données de l'exemple.
+- Pour la gestion des appels eux-mêmes, on utilise soit Fetch soit Axios.
+- Il est important que les appels soient effectués en dehors des composants React. Créez un service séparé qui se chargera d'effectuer ces appels.
+- Démarrez le projet avec des données simulées. Dès que le projet est fonctionnel, intégrez l'API.
+- Il est important que le projet soit documenté afin que tout le monde puisse travailler dessus.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation :
 
-### `npm run build`
+### Prérequis
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [NodeJS](https://nodejs.org/en/) Version 14.16.0
+- [npm](https://www.npmjs.com/) Version 6.14.11
+- [Visual Studio Code](https://code.visualstudio.com/) ou un autre IDE de votre choix
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [React](https://reactjs.org/) Version 17.0.2
+- [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start) Version 6.2.1
+- [Prop-types](https://www.npmjs.com/package/prop-types) Version 15.7.2
+- [Styled-components](https://styled-components.com/) Version 5.3.3
+- [Recharts](https://recharts.org/en-US/) Version 2.1.8
 
-### `npm run eject`
+### Installation et exécution du projet
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Backend Api
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Clonez l'Api Backend sur votre ordinateur : `https://github.com/lallieau/P9-front-end-dashboard.git`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Dans ce dépôt, installez les paquets/dépendances : `npm`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Exécutez l'Api Backend, qui écoutera sur le port 3000 par défaut. : `npm start`
 
-## Learn More
+Vous verrez le message `Magic happens on port 3000` dans la fenêtre du terminal.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Frontend App
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Clonez ce référentiel sur votre ordinateur : `https://github.com/lallieau/P12_SportSee_12-2021.git`
 
-### Code Splitting
+- Dans ce dépôt, installez les paquets/dépendances : `npm`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Exécutez l'application frontale : `npm start`
 
-### Analyzing the Bundle Size
+- Vous verrez le message :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  `? something is already running on port 3000.`
+  `Would you like to run the app on another port instead >> (Y/n)`
 
-### Making a Progressive Web App
+- répondre: Y
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+L'application fonctionne normalement sur http://localhost:3001/
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Attention, actuellement seulement deux utilisateurs ont été simulés. Ils ont respectivement les userId 12 et 18.**

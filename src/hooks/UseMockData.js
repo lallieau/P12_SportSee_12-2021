@@ -14,11 +14,11 @@ import {userData} from '../mock/mockData';
 // };
 
 export const useMockData = () => {
-  const activities = userData.activities.map(activity => activity);
-  const averages = userData.averages.map(average => average);
-  const performances = userData.performances.map(performance => performance);
+  const activity = userData.activities.map(activity => activity);
+  const average = userData.averages.map(average => average);
+  const performance = userData.performances.map(performance => performance);
   const score = userData.todayScore;
   const keyData = userData.keyData;
 
-  return {activities, averages, performances, score, keyData};
+  return {activity, average, performance, score, keyData};
 };

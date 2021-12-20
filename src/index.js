@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 import {createGlobalStyle} from 'styled-components';
 import {ThemeProvider as StyleComponentThemeProvider} from 'styled-components';
-import {theme} from '../src/utils/theme';
+import {theme} from '../src/utils/theme.js';
 
 const GlobalStyle = createGlobalStyle`
     body {

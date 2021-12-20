@@ -13,7 +13,27 @@ const Contents = styled.main`
 `;
 
 const Logo = styled.img``;
-const Title = styled.h1``;
+const Title = styled.h1`
+  color: ${({theme}) => theme.colors.secondary};
+  font-size: ${({theme}) => theme.fontSize.md};
+  font-weight: ${({theme}) => theme.fontWeight.extraBold};
+`;
+const Links = styled(Link)`
+color: ${({theme}) => theme.colors.secondary};
+font-size: ${({theme}) => theme.fontSize.sm};
+font-weight: ${({theme}) => theme.fontWeight.bold};
+padding: 0.913rem;
+margin: 1.913rem;
+border-radius: 5px;
+background-color: ${({theme}) => theme.colors.lightBackground};
+text-decoration: none;
+  &:hover {
+    background-color: ${({theme}) => theme.colors.secondary};
+    color: ${({theme}) => theme.colors.white}`;
+
+const CardWrapper = styled.div`
+  display: flex;
+`;
 
 export const Home = () => {
   return (
@@ -24,7 +44,10 @@ export const Home = () => {
         <Contents>
           <Logo src={logo} alt="logo sportsee" />
           <Title>Bienvenue sur SportSee !</Title>
-          <Link to="/user">Accéder au Dashboard</Link>
+          <CardWrapper>
+            <Links to="/user/12">Dashboard de Karl</Links>
+            <Links to="/user/18">Dashboard de Cecilia</Links>
+          </CardWrapper>
         </Contents>
       </Layout>
     </>
