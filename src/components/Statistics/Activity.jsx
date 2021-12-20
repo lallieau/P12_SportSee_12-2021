@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+// import helper function to format the date correctly
 import {formatDate} from '../../helpers/formatting';
 import {
   BarChart,
@@ -10,6 +12,9 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
+/**
+ * CSS for component using styled.components
+ */
 const ActivityWrapper = styled.div`
   grid-area: 1 / 1 / 3 / 4;
   background-color: ${({theme}) => theme.colors.lightBackground};
@@ -144,4 +149,9 @@ export const Activity = ({activityData}) => {
       <ActivityGraphics activity={activityData} />
     </ActivityWrapper>
   );
+};
+
+// PropTypes
+Activity.propTypes = {
+  activityData: PropTypes.array,
 };

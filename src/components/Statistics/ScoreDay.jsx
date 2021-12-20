@@ -1,6 +1,10 @@
 import {ResponsiveContainer, RadialBarChart, RadialBar} from 'recharts';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
+/**
+ * CSS for the component using styled.components
+ */
 const ScoreDayWrapper = styled.div`
   grid-area: 3 / 3 / 5 / 4;
   border-radius: 5px;
@@ -47,6 +51,11 @@ const ScoreText = styled.p`
   margin: 0rem;
 `;
 
+/**
+ * Renders the user's score on a RadialBarChart
+ * @param {number} score
+ * @returns {JSX}
+ */
 export const ScoreDay = ({score}) => {
   const scoreValue = [
     {value: 1, fill: '#fff'},
@@ -81,4 +90,9 @@ export const ScoreDay = ({score}) => {
       </ResponsiveContainer>
     </ScoreDayWrapper>
   );
+};
+
+// PropTypes
+ScoreDay.propTypes = {
+  score: PropTypes.number,
 };

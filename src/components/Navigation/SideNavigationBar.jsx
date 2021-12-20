@@ -6,6 +6,9 @@ import Yoga from '../../assets/icon-yoga.svg';
 import Swim from '../../assets/icon-swim.svg';
 import Gym from '../../assets/icon-dumbell.svg';
 
+/**
+ * CSS for the component using styled.components
+ */
 const SportGroup = styled.div`
   background-color: ${({theme}) => theme.colors.black};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -40,6 +43,10 @@ const SportLink = styled.div`
   justify-content: center;
 `;
 
+/**
+ * Renders the LeftHand Side navigation Bar
+ * @returns {JSX}
+ */
 export const SideNavigationBar = () => {
   return (
     <SportGroup>

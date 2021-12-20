@@ -2,6 +2,9 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../../assets/logo-sportsee.svg';
 
+/**
+ * CSS for the component using styled.components
+ */
 const Image = styled.img`
   width: 10rem;
   margin-top: 0.5rem;
@@ -28,6 +31,10 @@ text-decoration: none;
   color: ${({theme}) => theme.colors.primary};
 `;
 
+/**
+ * Renders the Header Navigation Bar
+ * @returns {JSX}
+ */
 export const NavigationBar = () => {
   return (
     <NavGroup>

@@ -7,9 +7,14 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+// import helper function to format the day correctly
 import {formatDay} from '../../helpers/formatting';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
+/**
+ * CSS for the component using styled.components
+ */
 const AverageSessionWrapper = styled.div`
   grid-area: 3 / 1 / 5 / 2;
   background: ${({theme}) => theme.colors.primary};
@@ -41,6 +46,12 @@ const ToolTipLabel = styled.label`
   width: 1.563rem;
 `;
 
+/**
+ * Renders the tooltip (minutes) information when user hovers on the line chart
+ * @param {boolean} active
+ * @param {array} payload
+ * @returns {JSX}
+ */
 const CustomTooltip = ({active, payload}) => {
   if (active && payload) {
     return <ToolTipLabel>{`${payload[0].value} min`}</ToolTipLabel>;
@@ -48,6 +59,11 @@ const CustomTooltip = ({active, payload}) => {
   return null;
 };
 
+/**
+ * Renders Average Sessions Line Chart
+ * @param {array} averageData
+ * @returns {JSX}
+ */
 export const AverageSession = ({averageData}) => {
   return (
     <AverageSessionWrapper>
@@ -99,4 +115,9 @@ export const AverageSession = ({averageData}) => {
       </ResponsiveContainer>
     </AverageSessionWrapper>
   );
+};
+
+// PropTypes
+AverageSession.propTypes = {
+  averageData: PropTypes.array,
 };

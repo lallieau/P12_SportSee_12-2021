@@ -1,6 +1,9 @@
 import styled from 'styled-components';
+// import helper function to format the 'kind' of activity correctly
 import {formatKind} from '../../helpers/formatting';
+// import helper function to reverse activity correctly
 import {reverseActivityOrder} from '../../helpers/reverseActivityOrder';
+import PropTypes from 'prop-types';
 import {
   RadarChart,
   PolarGrid,
@@ -9,6 +12,9 @@ import {
   Radar,
 } from 'recharts';
 
+/**
+ * CSS for the component using styled.components
+ */
 const PerformanceWrapper = styled.div`
   grid-area: 3 / 2 / 5 / 3;
   background: ${({theme}) => theme.colors.secondary};
@@ -21,6 +27,11 @@ const PerformanceWrapper = styled.div`
   align-items: center;
 `;
 
+/**
+ * Renders Performance Radar chart
+ * @param {object} performanceData
+ * @returns {JSX}
+ */
 export const Performance = ({performanceData}) => {
   return (
     <PerformanceWrapper>
@@ -48,4 +59,9 @@ export const Performance = ({performanceData}) => {
       </ResponsiveContainer>
     </PerformanceWrapper>
   );
+};
+
+// PropTypes
+Performance.propTypes = {
+  performanceData: PropTypes.array,
 };

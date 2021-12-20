@@ -3,7 +3,11 @@ import calories from '../../assets/calories-icon.svg';
 import proteines from '../../assets/protein-icon.svg';
 import glucides from '../../assets/carbs-icon.svg';
 import lipides from '../../assets/fat-icon.svg';
+import PropTypes from 'prop-types';
 
+/**
+ * CSS for the component using styled.components
+ */
 const ElementsWrapper = styled.div`
   grid-area: 1 / 4 / 5 / 5;
   display: grid;
@@ -42,6 +46,11 @@ const ElementCategory = styled.p`
   font-weight: ${({theme}) => theme.fontWeight.bold};
 `;
 
+/**
+ * Renders the data showing calories, carbs, fats & protiens
+ * @param {object} keyData
+ * @returns {JSX}
+ */
 export const KeyData = ({keyData}) => {
   const categories = ['Calories', 'Protéines', 'Glucides', 'Lipides'];
   const icon = [calories, proteines, glucides, lipides];
@@ -64,4 +73,9 @@ export const KeyData = ({keyData}) => {
       })}
     </ElementsWrapper>
   );
+};
+
+// PropTypes
+KeyData.propTypes = {
+  keyData: PropTypes.object,
 };
