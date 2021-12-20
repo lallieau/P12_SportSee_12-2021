@@ -50,7 +50,7 @@ const ScoreText = styled.p`
 export const ScoreDay = ({score}) => {
   const scoreValue = [
     {value: 1, fill: '#fff'},
-    {value: score.todayScore, fill: '#FF0000'},
+    {value: score, fill: '#FF0000'},
   ];
 
   return (
@@ -66,7 +66,7 @@ export const ScoreDay = ({score}) => {
       <ResponsiveContainer width="100%" height={200}>
         <RadialBarChart
           startAngle={90}
-          endAngle={400}
+          endAngle={500}
           innerRadius={40}
           outerRadius={100}
           barSize={10}

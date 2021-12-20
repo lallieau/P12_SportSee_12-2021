@@ -5,7 +5,8 @@ import {Activity} from '../components/Statistics/Activity';
 import {AverageSession} from '../components/Statistics/AverageSession';
 import {Performance} from '../components/Statistics/Performance';
 import {ScoreDay} from '../components/Statistics/ScoreDay';
-import {useMockData} from '../hooks/UseMockData';
+import {useUserData} from '../hooks/useUserData';
+import {useParams} from 'react-router-dom';
 
 const Header = styled.div`
   padding-bottom: 1.875;
@@ -41,11 +42,11 @@ const Analysis = styled.div`
   grid-column-gap: 1.5rem;
 `;
 
-const Heading = () => {
+const Heading = ({firstname}) => {
   return (
     <Header>
       <HeaderTitle>
-        Bonjour <UserName>Thomas</UserName>
+        Bonjour <UserName>{firstname}</UserName>
       </HeaderTitle>
       <HeaderText>
         Félicitation ! Vous avez explosé vos objectifs hier 👏
@@ -58,10 +59,10 @@ const UserStats = ({user}) => {
   return (
     <Statistics>
       <StatisticsGraphics>
-        <Activity activityData={user.activities} />
+        <Activity activityData={user.activity} />
         <Analysis>
-          <AverageSession averageData={user.averages} />
-          <Performance performanceData={user.performances} />
+          <AverageSession averageData={user.average} />
+          <Performance performanceData={user.performance} />
           <ScoreDay score={user.score} />
         </Analysis>
       </StatisticsGraphics>
@@ -71,7 +72,10 @@ const UserStats = ({user}) => {
 };
 
 export const Dashboard = () => {
-  const userData = useMockData();
+  const {userId} = useParams();
+  const {loading, data: userData} = useUserData(userId);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <>
@@ -80,8 +84,8 @@ export const Dashboard = () => {
         isSideNavigation
         description={'Bienvenue sur votre Dashboard'}>
         <Contents>
-          <Heading />
-          <UserStats user={userData} activity={userData} />
+          <Heading firstname={userData.userInfos.firstName} />
+          <UserStats user={userData} />
         </Contents>
       </Layout>
     </>

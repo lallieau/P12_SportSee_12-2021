@@ -8,7 +8,7 @@ import {userData} from '../mock/mockData';
 //   }, []);
 // };
 
-// // hooks
+//  hooks
 // export const useAverages = () => {
 //   return useMemo(() => userData.averages.map(average => average), []);
 // };
