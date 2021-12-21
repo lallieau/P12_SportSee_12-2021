@@ -109,6 +109,9 @@ export const AverageSession = ({averageData}) => {
             stroke="#fff"
             strokeWidth={2}
             dot={false}
+            style={{
+              opacity: '0.7',
+            }}
             activeDot={{r: 3, strokeWidth: 9, strokeOpacity: 0.3}}
           />
         </LineChart>

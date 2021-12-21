@@ -58,7 +58,7 @@ const ScoreText = styled.p`
  */
 export const ScoreDay = ({score}) => {
   const scoreValue = [
-    {value: 1, fill: '#fff'},
+    {value: 1, fill: 'transparent'},
     {value: score, fill: '#FF0000'},
   ];
 
@@ -81,7 +81,6 @@ export const ScoreDay = ({score}) => {
           barSize={10}
           data={scoreValue}>
           <RadialBar
-            isAnimationActive={false}
             cornerRadius={50}
             dataKey="value"
             background={{fill: '#FCFCFC'}}
