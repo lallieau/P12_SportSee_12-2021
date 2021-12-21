@@ -3,6 +3,9 @@ import logo from '../assets/logo-sportsee.svg';
 import {Link} from 'react-router-dom';
 import {Layout} from '../components/Layout';
 
+/**
+ * CSS for the component using styled.components
+ */
 const Contents = styled.main`
   margin: 0 auto;
   flex-direction: column;
@@ -35,6 +38,10 @@ const CardWrapper = styled.div`
   display: flex;
 `;
 
+/**
+ * Renders the "Home page" with a user link to access their dashboard
+ * @returns {JSX}
+ */
 export const Home = () => {
   return (
     <>

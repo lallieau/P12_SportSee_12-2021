@@ -1,6 +1,12 @@
 import {useEffect, useState} from 'react';
 import {fetchApi} from '../utils/fetchApi';
 
+/**
+ * Hook to fetch data
+ * @param {string} userId
+ * @returns {object} data
+ * @returns {boolean} loading
+ */
 export const useUserData = userId => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);

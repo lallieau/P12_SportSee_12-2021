@@ -60,6 +60,12 @@ const ToolTipLabel = styled.div`
   padding: 0.313rem;
 `;
 
+/**
+ * Renders the tooltip (kg/kCal) information when user hovers on barchart
+ * @param {boolean} active
+ * @param {array} payload
+ * @returns {JSX}
+ */
 const CustomTooltip = ({active, payload}) => {
   if (active && payload && payload.length) {
     return (
@@ -72,7 +78,12 @@ const CustomTooltip = ({active, payload}) => {
   return null;
 };
 
-const ActivityGraphics = ({activity}) => {
+/**
+ * Renders Activities BarChart with Weight & Calories burned
+ * @param {object} activity
+ * @returns {JSX}
+ */
+const ActivityCharts = ({activity}) => {
   return (
     <ResponsiveContainer width="100%" height={200}>
       <BarChart barGap={5} width="100%" data={activity}>
@@ -130,6 +141,10 @@ const ActivityGraphics = ({activity}) => {
   );
 };
 
+/**
+ * Renders Activities BarChart legend
+ * @returns {JSX}
+ */
 const ActivityHeading = () => {
   return (
     <Heading>
@@ -142,11 +157,16 @@ const ActivityHeading = () => {
   );
 };
 
+/**
+ * Renders Activities section with chart
+ * @param {object} activityData
+ * @returns {JSX}
+ */
 export const Activity = ({activityData}) => {
   return (
     <ActivityWrapper>
       <ActivityHeading />
-      <ActivityGraphics activity={activityData} />
+      <ActivityCharts activity={activityData} />
     </ActivityWrapper>
   );
 };

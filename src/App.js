@@ -4,6 +4,10 @@ import {Home} from './pages/Home';
 import {Dashboard} from './pages/Dashboard';
 import {Error} from './pages/Error';
 
+/**
+ * Manages routes & renders pages
+ * @returns {JSX}
+ */
 function App() {
   return (
     <Routes>

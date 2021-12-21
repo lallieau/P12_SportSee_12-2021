@@ -7,7 +7,11 @@ import {Performance} from '../components/Statistics/Performance';
 import {ScoreDay} from '../components/Statistics/ScoreDay';
 import {useUserData} from '../hooks/useUserData';
 import {useParams} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
+/**
+ * CSS for the component using styled.components
+ */
 const Header = styled.div`
   padding-bottom: 1.875;
 `;
@@ -42,6 +46,11 @@ const Analysis = styled.div`
   grid-column-gap: 1.5rem;
 `;
 
+/**
+ * Render the header of dashboard
+ * @param {string} firstname
+ * @returns {JSX}
+ */
 const Heading = ({firstname}) => {
   return (
     <Header>
@@ -55,6 +64,11 @@ const Heading = ({firstname}) => {
   );
 };
 
+/**
+ * Renders the Statistics of a user
+ * @param {object} user
+ * @returns {JSX}
+ */
 const UserStats = ({user}) => {
   return (
     <Statistics>
@@ -71,6 +85,10 @@ const UserStats = ({user}) => {
   );
 };
 
+/**
+ * Renders the Dashboard of a user with all their stats
+ * @returns {JSX}
+ */
 export const Dashboard = () => {
   const {userId} = useParams();
   const {loading, data: userData} = useUserData(userId);
@@ -90,4 +108,13 @@ export const Dashboard = () => {
       </Layout>
     </>
   );
+};
+
+// PropTypes
+Heading.propTypes = {
+  firstName: PropTypes.string,
+};
+
+UserStats.propTypes = {
+  user: PropTypes.object,
 };
