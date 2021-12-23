@@ -8,6 +8,7 @@ import {ScoreDay} from '../components/Statistics/ScoreDay';
 import {useUserData} from '../hooks/useUserData';
 import {useParams} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {Error} from '../pages/Error';
 
 /**
  * CSS for the component using styled.components
@@ -69,18 +70,18 @@ const Heading = ({firstname}) => {
  * @param {object} user
  * @returns {JSX}
  */
-const UserStats = ({user}) => {
+const UserStats = ({activity, average, performance, keyData, score}) => {
   return (
     <Statistics>
       <StatisticsGraphics>
-        <Activity activityData={user.activity} />
+        <Activity activityData={activity} />
         <Analysis>
-          <AverageSession averageData={user.average} />
-          <Performance performanceData={user.performance} />
-          <ScoreDay score={user.score} />
+          <AverageSession averageData={average} />
+          <Performance performanceData={performance} />
+          <ScoreDay score={score} />
         </Analysis>
       </StatisticsGraphics>
-      <KeyData keyData={user.keyData} />
+      <KeyData keyData={keyData} />
     </Statistics>
   );
 };
@@ -91,10 +92,11 @@ const UserStats = ({user}) => {
  */
 export const Dashboard = () => {
   const {userId} = useParams();
-  const {loading, data: userData} = useUserData(userId);
+  const {loading, error, user, activity, average, performance} =
+    useUserData(userId);
 
+  if (error) return <Error />;
   if (loading) return <p>Loading...</p>;
-
   return (
     <>
       <Layout
@@ -102,8 +104,14 @@ export const Dashboard = () => {
         isSideNavigation
         description={'Bienvenue sur votre Dashboard'}>
         <Contents>
-          <Heading firstname={userData.userInfos.firstName} />
-          <UserStats user={userData} />
+          <Heading firstname={user.userInfos.firstName} />
+          <UserStats
+            activity={activity}
+            average={average}
+            performance={performance}
+            keyData={user.keyData}
+            score={user.score}
+          />
         </Contents>
       </Layout>
     </>

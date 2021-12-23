@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {fetchApi} from '../utils/fetchApi';
+import {FetchApi} from '../utils/fetchApi';
 
 /**
  * Hook to fetch data
@@ -9,27 +9,35 @@ import {fetchApi} from '../utils/fetchApi';
  */
 export const useUserData = userId => {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
+  const [error, setError] = useState(false);
+
+  const [user, setUser] = useState(null);
+  const [activity, setActivity] = useState(null);
+  const [average, setAverage] = useState(null);
+  const [performance, setPerformance] = useState(null);
 
   async function getUserData(userId) {
-    const user = await fetchApi(`user/${userId}`);
-    const userActivity = await fetchApi(`user/${userId}/activity`);
-    const userAverage = await fetchApi(`user/${userId}/average-sessions`);
-    const userPerformance = await fetchApi(`user/${userId}/performance`);
+    try {
+      const userInfos = await FetchApi(`user/${userId}`);
+      const userActivity = await FetchApi(`user/${userId}/activity`);
+      const userAverage = await FetchApi(`user/${userId}/average-sessions`);
+      const userPerformance = await FetchApi(`user/${userId}/performance`);
 
-    setData({
-      ...user.data,
-      score: user.data.score,
-      activity: userActivity.data.sessions,
-      average: userAverage.data.sessions,
-      performance: userPerformance.data.data,
-    });
-    setLoading(false);
+      setUser(userInfos.data);
+      setActivity(userActivity.data.sessions);
+      setAverage(userAverage.data.sessions);
+      setPerformance(userPerformance.data.data);
+    } catch (e) {
+      console.log(e);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
     getUserData(userId);
   }, [userId]);
 
-  return {loading, data};
+  return {loading, error, user, activity, average, performance};
 };
