@@ -69,7 +69,7 @@ export const ScoreDay = ({score}) => {
         <ScorePercentage>{100 * score}%</ScorePercentage>
         <ScoreText>
           de votre <br />
-          objectif{' '}
+          objectif
         </ScoreText>
       </ScoreLegend>
       <ResponsiveContainer width="100%" height={200}>
